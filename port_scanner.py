@@ -10,6 +10,11 @@ def get_open_ports(target, port_range, verbose = True):
         result = s.connect_ex((host, port))
         if result == 0:
             open_ports.append(port)
+            def port_scanner(port):
+      if s.connect_ex((host, port)):
+        print("The port is closed")
+      else:
+        print("The ports for", host, "are", open_ports)
     return(open_ports)
 
-get_open_ports("209.216.230.240", [440, 445])
+port_scanner.get_open_ports("209.216.230.240", [440, 445])
